@@ -1,35 +1,35 @@
-function varargout = mainMenu(varargin)
-% MAINMENU MATLAB code for mainMenu.fig
-%      MAINMENU, by itself, creates a new MAINMENU or raises the existing
+function varargout = ChooseLevelMenu(varargin)
+% CHOOSELEVELMENU MATLAB code for ChooseLevelMenu.fig
+%      CHOOSELEVELMENU, by itself, creates a new CHOOSELEVELMENU or raises the existing
 %      singleton*.
 %
-%      H = MAINMENU returns the handle to a new MAINMENU or the handle to
+%      H = CHOOSELEVELMENU returns the handle to a new CHOOSELEVELMENU or the handle to
 %      the existing singleton*.
 %
-%      MAINMENU('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in MAINMENU.M with the given input arguments.
+%      CHOOSELEVELMENU('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in CHOOSELEVELMENU.M with the given input arguments.
 %
-%      MAINMENU('Property','Value',...) creates a new MAINMENU or raises the
+%      CHOOSELEVELMENU('Property','Value',...) creates a new CHOOSELEVELMENU or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before mainMenu_OpeningFcn gets called.  An
+%      applied to the GUI before ChooseLevelMenu_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to mainMenu_OpeningFcn via varargin.
+%      stop.  All inputs are passed to ChooseLevelMenu_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help mainMenu
+% Edit the above text to modify the response to help ChooseLevelMenu
 
-% Last Modified by GUIDE v2.5 11-May-2022 19:31:47
+% Last Modified by GUIDE v2.5 11-May-2022 19:50:40
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @mainMenu_OpeningFcn, ...
-                   'gui_OutputFcn',  @mainMenu_OutputFcn, ...
+                   'gui_OpeningFcn', @ChooseLevelMenu_OpeningFcn, ...
+                   'gui_OutputFcn',  @ChooseLevelMenu_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -44,27 +44,26 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before mainMenu is made visible.
-function mainMenu_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before ChooseLevelMenu is made visible.
+function ChooseLevelMenu_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to mainMenu (see VARARGIN)
+% varargin   command line arguments to ChooseLevelMenu (see VARARGIN)
 
-% Choose default command line output for mainMenu
+% Choose default command line output for ChooseLevelMenu
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 imshow("menu_picture.jpg");
-
-% UIWAIT makes mainMenu wait for user response (see UIRESUME)
+% UIWAIT makes ChooseLevelMenu wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = mainMenu_OutputFcn(hObject, eventdata, handles) 
+function varargout = ChooseLevelMenu_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -74,16 +73,19 @@ function varargout = mainMenu_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on button press in tag_start.
-function tag_start_Callback(hObject, eventdata, handles)
-ChooseLevelMenu();
-closereq();
+% --- Executes on button press in tag_level1.
+function tag_level1_Callback(hObject, eventdata, handles)
 
 
-% --- Executes on button press in tag_free.
-function tag_free_Callback(hObject, eventdata, handles)
-freeModeMenu();
-closereq();
+
+% --- Executes on button press in tag_level2.
+function tag_level2_Callback(hObject, eventdata, handles)
+
+
+
+% --- Executes on button press in tag_level3.
+function tag_level3_Callback(hObject, eventdata, handles)
+
 
 
 % --- Executes on button press in tag_close.
