@@ -22,7 +22,7 @@ function varargout = freeModeMenu(varargin)
 
 % Edit the above text to modify the response to help freeModeMenu
 
-% Last Modified by GUIDE v2.5 11-May-2022 19:59:49
+% Last Modified by GUIDE v2.5 12-May-2022 11:22:03
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -76,3 +76,10 @@ varargout{1} = handles.output;
 % --- Executes on button press in tag_close.
 function tag_close_Callback(hObject, eventdata, handles)
 closereq();
+
+
+% --- Executes on button press in tag_back.
+function tag_back_Callback(hObject, eventdata, handles)
+mainMenu();
+closereq();
+

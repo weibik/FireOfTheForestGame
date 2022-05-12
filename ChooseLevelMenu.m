@@ -22,7 +22,7 @@ function varargout = ChooseLevelMenu(varargin)
 
 % Edit the above text to modify the response to help ChooseLevelMenu
 
-% Last Modified by GUIDE v2.5 11-May-2022 19:50:40
+% Last Modified by GUIDE v2.5 12-May-2022 11:22:22
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -75,19 +75,28 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in tag_level1.
 function tag_level1_Callback(hObject, eventdata, handles)
-
+game(1);
+closereq();
 
 
 % --- Executes on button press in tag_level2.
 function tag_level2_Callback(hObject, eventdata, handles)
-
+game(2);
+closereq();
 
 
 % --- Executes on button press in tag_level3.
 function tag_level3_Callback(hObject, eventdata, handles)
-
+game(3);
+closereq();
 
 
 % --- Executes on button press in tag_close.
 function tag_close_Callback(hObject, eventdata, handles)
+closereq();
+
+
+% --- Executes on button press in tag_back.
+function tag_back_Callback(hObject, eventdata, handles)
+mainMenu();
 closereq();
