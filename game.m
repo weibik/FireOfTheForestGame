@@ -22,7 +22,7 @@ function varargout = game(varargin)
 
 % Edit the above text to modify the response to help game
 
-% Last Modified by GUIDE v2.5 12-May-2022 11:56:50
+% Last Modified by GUIDE v2.5 13-May-2022 16:23:43
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -54,7 +54,8 @@ handles.output = hObject;
 % Update handles structure
 guidata(hObject, handles);
 
-set(handles.tag_level, "String", varargin{1})
+set(handles.tag_level, "String", newline + "LEVEL " + varargin{1})
+simulation(0);
 
 % UIWAIT makes game wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
@@ -68,3 +69,14 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in tag_instruction.
 function tag_instruction_Callback(hObject, eventdata, handles)
+instruction();
+
+% --- Executes on button press in tag_back.
+function tag_back_Callback(hObject, eventdata, handles)
+ChooseLevelMenu();
+closereq();
+
+
+% --- Executes on button press in tag_close.
+function tag_close_Callback(hObject, eventdata, handles)
+closereq();

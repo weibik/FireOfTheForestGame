@@ -22,7 +22,7 @@ function varargout = freeModeMenu(varargin)
 
 % Edit the above text to modify the response to help freeModeMenu
 
-% Last Modified by GUIDE v2.5 12-May-2022 11:22:03
+% Last Modified by GUIDE v2.5 13-May-2022 16:31:37
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -53,11 +53,11 @@ function freeModeMenu_OpeningFcn(hObject, eventdata, handles, varargin)
 % varargin   command line arguments to freeModeMenu (see VARARGIN)
 
 % Choose default command line output for freeModeMenu
-handles.output = hObject;
+handles.output = hObject; 
 
 % Update handles structure
 guidata(hObject, handles);
-imshow("menu_picture.jpg");
+simulation(10);
 % UIWAIT makes freeModeMenu wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -83,3 +83,40 @@ function tag_back_Callback(hObject, eventdata, handles)
 mainMenu();
 closereq();
 
+
+% --- Executes on button press in tag_lightning.
+function tag_lightning_Callback(hObject, eventdata, handles)
+
+
+% --- Executes on slider movement.
+function tag_wind_slider_Callback(hObject, eventdata, handles)
+
+
+% --- Executes during object creation, after setting all properties.
+function tag_wind_slider_CreateFcn(hObject, eventdata, handles)
+
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on slider movement.
+function tag_time_to_burn_slider_Callback(hObject, eventdata, handles)
+
+
+
+% --- Executes during object creation, after setting all properties.
+function tag_time_to_burn_slider_CreateFcn(hObject, eventdata, handles)
+
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on button press in tag_update.
+function tag_update_Callback(hObject, eventdata, handles)
+simulation(2);
