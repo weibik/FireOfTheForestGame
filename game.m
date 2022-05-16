@@ -46,7 +46,7 @@ end
 
 % --- Executes just before game is made visible.
 function game_OpeningFcn(hObject, eventdata, handles, varargin)
-
+set(handles.tag_background,'visible', 'off');
 
 % Choose default command line output for game
 handles.output = hObject;
@@ -55,7 +55,7 @@ handles.output = hObject;
 guidata(hObject, handles);
 
 set(handles.tag_level, "String", newline + "LEVEL " + varargin{1})
-simulation(0);
+simulation(90);
 
 % UIWAIT makes game wait for user response (see UIRESUME)
 % uiwait(handles.figure1);

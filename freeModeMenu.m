@@ -22,7 +22,7 @@ function varargout = freeModeMenu(varargin)
 
 % Edit the above text to modify the response to help freeModeMenu
 
-% Last Modified by GUIDE v2.5 13-May-2022 16:31:37
+% Last Modified by GUIDE v2.5 16-May-2022 16:30:11
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -57,7 +57,8 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
-simulation(10);
+simulation(90);
+set(handles.tag_background,'visible', 'off');
 % UIWAIT makes freeModeMenu wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -119,4 +120,19 @@ end
 
 % --- Executes on button press in tag_update.
 function tag_update_Callback(hObject, eventdata, handles)
-simulation(2);
+p = get(handles.tag_density_slider, 'Value') * 100;
+p = round(p, 0);
+simulation(p);
+
+
+% --- Executes on slider movement.
+function tag_density_slider_Callback(hObject, eventdata, handles)
+
+
+% --- Executes during object creation, after setting all properties.
+function tag_density_slider_CreateFcn(hObject, eventdata, handles)
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
