@@ -1,26 +1,4 @@
 function varargout = mainMenu(varargin)
-% MAINMENU MATLAB code for mainMenu.fig
-%      MAINMENU, by itself, creates a new MAINMENU or raises the existing
-%      singleton*.
-%
-%      H = MAINMENU returns the handle to a new MAINMENU or the handle to
-%      the existing singleton*.
-%
-%      MAINMENU('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in MAINMENU.M with the given input arguments.
-%
-%      MAINMENU('Property','Value',...) creates a new MAINMENU or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before mainMenu_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to mainMenu_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
-
-% Edit the above text to modify the response to help mainMenu
 
 % Last Modified by GUIDE v2.5 11-May-2022 19:31:47
 

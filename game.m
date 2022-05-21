@@ -1,24 +1,4 @@
 function varargout = game(varargin)
-% GAME MATLAB code for game.fig
-%      GAME, by itself, creates a new GAME or raises the existing
-%      singleton*.
-%
-%      H = GAME returns the handle to a new GAME or the handle to
-%      the existing singleton*.
-%
-%      GAME('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in GAME.M with the given input arguments.
-%
-%      GAME('Property','Value',...) creates a new GAME or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before game_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to game_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
 
 % Edit the above text to modify the response to help game
 

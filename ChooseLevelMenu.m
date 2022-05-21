@@ -1,27 +1,4 @@
 function varargout = ChooseLevelMenu(varargin)
-% CHOOSELEVELMENU MATLAB code for ChooseLevelMenu.fig
-%      CHOOSELEVELMENU, by itself, creates a new CHOOSELEVELMENU or raises the existing
-%      singleton*.
-%
-%      H = CHOOSELEVELMENU returns the handle to a new CHOOSELEVELMENU or the handle to
-%      the existing singleton*.
-%
-%      CHOOSELEVELMENU('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in CHOOSELEVELMENU.M with the given input arguments.
-%
-%      CHOOSELEVELMENU('Property','Value',...) creates a new CHOOSELEVELMENU or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before ChooseLevelMenu_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to ChooseLevelMenu_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
-
-% Edit the above text to modify the response to help ChooseLevelMenu
-
 % Last Modified by GUIDE v2.5 12-May-2022 11:22:22
 
 % Begin initialization code - DO NOT EDIT

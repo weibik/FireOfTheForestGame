@@ -1,28 +1,6 @@
 function varargout = freeModeMenu(varargin)
-% FREEMODEMENU MATLAB code for freeModeMenu.fig
-%      FREEMODEMENU, by itself, creates a new FREEMODEMENU or raises the existing
-%      singleton*.
-%
-%      H = FREEMODEMENU returns the handle to a new FREEMODEMENU or the handle to
-%      the existing singleton*.
-%
-%      FREEMODEMENU('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in FREEMODEMENU.M with the given input arguments.
-%
-%      FREEMODEMENU('Property','Value',...) creates a new FREEMODEMENU or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before freeModeMenu_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to freeModeMenu_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help freeModeMenu
-
-% Last Modified by GUIDE v2.5 16-May-2022 16:30:11
+% Last Modified by GUIDE v2.5 17-May-2022 17:24:15
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -136,3 +114,7 @@ function tag_density_slider_CreateFcn(hObject, eventdata, handles)
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
 end
+
+
+% --- Executes on button press in tag_firefigther.
+function tag_firefigther_Callback(hObject, eventdata, handles)

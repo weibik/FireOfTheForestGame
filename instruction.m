@@ -1,26 +1,4 @@
 function varargout = instruction(varargin)
-% INSTRUCTION MATLAB code for instruction.fig
-%      INSTRUCTION, by itself, creates a new INSTRUCTION or raises the existing
-%      singleton*.
-%
-%      H = INSTRUCTION returns the handle to a new INSTRUCTION or the handle to
-%      the existing singleton*.
-%
-%      INSTRUCTION('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in INSTRUCTION.M with the given input arguments.
-%
-%      INSTRUCTION('Property','Value',...) creates a new INSTRUCTION or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before instruction_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to instruction_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
-
-% Edit the above text to modify the response to help instruction
 
 % Last Modified by GUIDE v2.5 15-May-2022 10:49:44
 
