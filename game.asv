@@ -31,6 +31,8 @@ set(handles.tag_background,'visible', 'off');
 % Choose default command line output for game
 handles.output = hObject;
 
+t  = timer('timerfcn', {@graficar, hObject}, 'Period',0.1);
+
 % Update handles structure
 guidata(hObject, handles);
 
@@ -62,11 +64,7 @@ closereq();
 function tag_close_Callback(hObject, eventdata, handles)
 closereq();
 
-         
-
-
-
-
-
+function graficar(hObject, eventdata, fignum)
+handles = guidata(fignum);
 
 

@@ -1,6 +1,6 @@
-function varargout = freeModeMenu(varargin)
+    function varargout = freeModeMenu(varargin)
 
-% Last Modified by GUIDE v2.5 17-May-2022 17:24:15
+% Last Modified by GUIDE v2.5 26-May-2022 13:44:53
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -100,8 +100,9 @@ end
 function tag_update_Callback(hObject, eventdata, handles)
 p = get(handles.tag_density_slider, 'Value') * 100;
 p = round(p, 0);
+%fireSpread(p, 35);
+cla(handles.tag_simulation);
 simulation(p);
-
 
 % --- Executes on slider movement.
 function tag_density_slider_Callback(hObject, eventdata, handles)
@@ -118,3 +119,9 @@ end
 
 % --- Executes on button press in tag_firefigther.
 function tag_firefigther_Callback(hObject, eventdata, handles)
+[x, y] = ginput(1);
+x = round(x, 0);
+y = round(y, 0);
+cla(handles.tag_simulation);
+fireSpread(90, 35, x, y);
+%set(handles.tag_cords, "String", x)

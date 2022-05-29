@@ -1,4 +1,4 @@
-function [] = simulation(density)
+function [forest] = simulation(density)
     resolution = 100;
     myColors = [0 0.5 0; 1 0 0; 0 0 0; 1 1 1];
     forest = zeros(resolution); 
