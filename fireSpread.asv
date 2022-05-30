@@ -1,5 +1,4 @@
-function [] = fireSpread(handles, sim, wind, timeOfPause, varargin)
-%function [] = fireSpread(handles, density, wind, timeOfPause, varargin)
+function [] = fireSpread(handles, density, wind, timeOfPause, varargin)
     nVarargs = length(varargin);
     if nVarargs == 0
         x = 50;
@@ -8,11 +7,10 @@ function [] = fireSpread(handles, sim, wind, timeOfPause, varargin)
         x = varargin{1};
         y = 50;
     elseif nVarargs == 2
-        y = varargin{1};
-        x = varargin{2};     
+        x = varargin{1};
+        y = varargin{2};     
     end
-    %F = simulation(density);
-    F = sim;
+    F = simulation(density);
 
     Spread = [0 1; 1 1; 1 0; 1 -1; 0 -1; -1 -1; -1 0; -1 1];                                                                  
 

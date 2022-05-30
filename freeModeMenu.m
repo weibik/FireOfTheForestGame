@@ -1,6 +1,6 @@
     function varargout = freeModeMenu(varargin)
 
-% Last Modified by GUIDE v2.5 26-May-2022 13:44:53
+% Last Modified by GUIDE v2.5 30-May-2022 15:12:12
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -34,9 +34,16 @@ function freeModeMenu_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject; 
 
 % Update handles structure
-guidata(hObject, handles);
-simulation(90);
+handles.density = 90;
+handles.wind = 35;
+handles.speed = 0.1;
+set(handles.tag_wind, "String", "WIND " + handles.wind);
+set(handles.tag_speed, "String","SPEED " + handles.speed);
+set(handles.tag_density, "String", newline + "DENSITY " + handles.density);
+handles.sim = simulation(handles.density);
 set(handles.tag_background,'visible', 'off');
+
+guidata(hObject, handles);
 % UIWAIT makes freeModeMenu wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -54,18 +61,26 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in tag_close.
 function tag_close_Callback(hObject, eventdata, handles)
+setappdata(handles.tag_simulation, 'stopPlot', 1);
+guidata(hObject, handles);
 closereq();
 
 
 % --- Executes on button press in tag_back.
 function tag_back_Callback(hObject, eventdata, handles)
+setappdata(handles.tag_simulation, 'stopPlot', 1);
+guidata(hObject, handles);
 mainMenu();
 closereq();
 
 
 % --- Executes on button press in tag_lightning.
 function tag_lightning_Callback(hObject, eventdata, handles)
-
+[x, y] = ginput(1);
+x = round(x, 0);
+y = round(y, 0);
+set(handles.tag_cords, "String", "COORDINATES OF THE FIRE: " + x + " " + y)
+fireSpread(handles, handles.sim, handles.wind, handles.speed, x, y);
 
 % --- Executes on slider movement.
 function tag_wind_slider_Callback(hObject, eventdata, handles)
@@ -82,12 +97,12 @@ end
 
 
 % --- Executes on slider movement.
-function tag_time_to_burn_slider_Callback(hObject, eventdata, handles)
+function tag_speed_slider_Callback(hObject, eventdata, handles)
 
 
 
 % --- Executes during object creation, after setting all properties.
-function tag_time_to_burn_slider_CreateFcn(hObject, eventdata, handles)
+function tag_speed_slider_CreateFcn(hObject, eventdata, handles)
 
 
 % Hint: slider controls usually have a light gray background.
@@ -97,12 +112,20 @@ end
 
 
 % --- Executes on button press in tag_update.
-function tag_update_Callback(hObject, eventdata, handles)
-p = get(handles.tag_density_slider, 'Value') * 100;
-p = round(p, 0);
-%fireSpread(p, 35);
+function tag_update_Callback(hObject, ~, handles)
+handles.density = get(handles.tag_density_slider, 'Value') * 100;
+handles.density = round(handles.density, 0);
+handles.speed = get(handles.tag_speed_slider, 'Value');
+handles.speed = round(handles.speed, 2);
+handles.wind = get(handles.tag_wind_slider, 'Value') * 100;
+handles.wind = round(handles.wind, 0);
+set(handles.tag_wind, "String", "WIND " + handles.wind);
+set(handles.tag_speed, "String","SPEED " + handles.speed);
+set(handles.tag_density, "String", newline + "DENSITY " + handles.density);
 cla(handles.tag_simulation);
-simulation(p);
+guidata(hObject, handles);
+handles.sim = simulation(handles.density);
+guidata(hObject, handles);
 
 % --- Executes on slider movement.
 function tag_density_slider_Callback(hObject, eventdata, handles)
@@ -119,9 +142,3 @@ end
 
 % --- Executes on button press in tag_firefigther.
 function tag_firefigther_Callback(hObject, eventdata, handles)
-[x, y] = ginput(1);
-x = round(x, 0);
-y = round(y, 0);
-cla(handles.tag_simulation);
-fireSpread(90, 35, x, y);
-%set(handles.tag_cords, "String", x)

@@ -27,6 +27,7 @@ tmr = timer('Name','Reminder',...
             'ExecutionMode','fixedSpacing',...
             'TimerFcn',{@updater}); 
 start(tmr);  % Start the timer object.
+figure('CloseRequestFcn',@my_closereq)
 set(S.fh,'deletefcn',{@deleter})  % Kill timer if fig is closed.
     function [] = updater(varargin)
     % timerfcn for the timer.  If figure is deleted, so is timer.
@@ -48,4 +49,19 @@ set(S.fh,'deletefcn',{@deleter})  % Kill timer if fig is closed.
          stop(tmr);
          delete(tmr);
     end
+    
+end
+
+function my_closereq(src,event)
+% Close request function 
+% to display a question dialog box 
+selection = questdlg('Close This Figure?', ...
+    'Close Request Function', ...
+    'Yes','No','Yes'); 
+switch selection 
+    case 'Yes'
+        delete(gcf)
+    case 'No'
+        return 
+end
 end
