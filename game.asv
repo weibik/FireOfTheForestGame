@@ -46,14 +46,14 @@ switch choice
         handles.density = 80;
         handles.wind = 40;
         handles.speed = 0.1;
-        handles.x = [25 70];
-        handles.y = [25 70];
+        handles.x = 50;
+        handles.y = 50;
     case 3
         handles.density = 90;
         handles.wind = 45;
         handles.speed = 0.1;
-        handles.x = [15 70 45];
-        handles.y = [15 70 64];
+        handles.x = 50;
+        handles.y = 50;
     otherwise
         disp("Wrong choice")
 end

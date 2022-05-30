@@ -1,5 +1,6 @@
 function [] = fireSpread(handles, sim, wind, timeOfPause, varargin)
-%function [] = fireSpread(handles, density, wind, timeOfPause, varargin)
+clc;
+cla;
     nVarargs = length(varargin);
     if nVarargs == 0
         x = 50;
