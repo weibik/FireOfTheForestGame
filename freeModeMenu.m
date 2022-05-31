@@ -1,6 +1,6 @@
 function varargout = freeModeMenu(varargin)
 
-% Last Modified by GUIDE v2.5 31-May-2022 12:43:24
+% Last Modified by GUIDE v2.5 31-May-2022 16:19:04
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -107,5 +107,3 @@ function tag_start_Callback(~, ~, handles)
     else
         fireSpread(handles, simulation(handles.density), handles.wind, handles.speed, handles.x, handles.y, handles.fighterX, handles.fighterY);
     end
-
-

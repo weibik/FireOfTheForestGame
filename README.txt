@@ -1,0 +1,1 @@
+In order to start program user needs to open mainMenu figure and from there launch the programm.

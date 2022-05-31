@@ -31,22 +31,19 @@ function [forest] = fireSpread(handles, sim, wind, timeOfPause, varargin)
 
     spread = [0 1; 1 1; 1 0; 1 -1; 0 -1; -1 -1; -1 0; -1 1];      
     
-
     for ii =  1:length(x)
         forest(x(ii), y(ii)) = 1;
     end
     
    
-
-    %% LOOPS
     while ~isempty(find(forest == 1, 1))                                        
         [i, j] = find(forest == 1);                                              
         for x = 1:length(i)                                                 
-            for M = 1:8                                                     
+            for neighbour = 1:8                                                     
                 try                                                         %#ok<TRYNC> 
-                    if forest(i(x) + spread(M), j(x) + spread(M + 8)) == 0       
+                    if forest(i(x) + spread(neighbour), j(x) + spread(neighbour + 8)) == 0       
                         if randi([1, 100]) <= wind                          
-                            forest(i(x) + spread(M), j(x) + spread(M + 8)) = 1;        
+                            forest(i(x) + spread(neighbour, j(x) + spread(neighbour + 8)) = 1;        
                         end
                     end                    
                 end
