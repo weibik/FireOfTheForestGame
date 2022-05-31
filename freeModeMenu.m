@@ -41,7 +41,7 @@ handles.fighterX = [];
 handles.fighterY = [];
 
 set(handles.tag_wind, "String", "WIND " + handles.wind);
-set(handles.tag_speed, "String","SPEED " + handles.speed);
+set(handles.tag_speed, "String","SPEED " + (1 - handles.speed));
 set(handles.tag_density, "String", newline + "DENSITY " + handles.density);
 handles.sim = simulation(handles.density);
 set(handles.tag_background,'visible', 'off');
@@ -123,6 +123,8 @@ handles.wind = round(handles.wind, 0);
 set(handles.tag_wind, "String", "WIND " + handles.wind);
 set(handles.tag_speed, "String","SPEED " + ( 1 - handles.speed));
 set(handles.tag_density, "String", newline + "DENSITY " + handles.density);
+handles.x = [];
+handles.y = [];
 handles.fighterX = [];
 handles.fighterY = [];
 cla(handles.tag_simulation);
@@ -152,7 +154,7 @@ guidata(hObject, handles);
 
 
 % --- Executes on button press in tag_start.
-function tag_start_Callback(hObject, ~, handles)
+function tag_start_Callback(~, ~, handles)
 if isempty(handles.fighterX)
     fireSpread(handles, simulation(handles.density), handles.wind, handles.speed, handles.x, handles.y);
 else

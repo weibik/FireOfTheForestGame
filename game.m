@@ -104,20 +104,20 @@ guidata(hObject, handles);
 closereq();     
 
 % --- Executes on button press in tag_start.
-function tag_start_Callback(hObject, ~, handles)
+function tag_start_Callback(~, ~, handles)
 if isempty(handles.fighterX)
     forest = fireSpread(handles, simulation(handles.density), handles.wind, handles.speed, handles.x, handles.y);
 else
     forest = fireSpread(handles, simulation(handles.density), handles.wind, handles.speed, handles.x, handles.y, handles.fighterX, handles.fighterY);
 end
 if winningCheck(forest)
-    message = msgbox("Congratulations! You have won!");
+    message = msgbox("Congratulations! You have won!");     %#ok<NASGU> 
 else
-    message = msgbox("You've lost. Try again");
+    message = msgbox("You've lost. Try again");             %#ok<NASGU> 
 end
 
 
 
 % --- Executes on button press in tag_refresh.
-function tag_refresh_Callback(hObject, eventdata, handles)
+function tag_refresh_Callback(~, ~, handles)
 game(handles.choice)

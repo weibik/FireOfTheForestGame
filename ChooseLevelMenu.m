@@ -22,7 +22,7 @@ end
 
 
 % --- Executes just before ChooseLevelMenu is made visible.
-function ChooseLevelMenu_OpeningFcn(hObject, eventdata, handles, varargin)
+function ChooseLevelMenu_OpeningFcn(hObject, ~, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -40,7 +40,7 @@ imshow("menu_picture.jpg");
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = ChooseLevelMenu_OutputFcn(hObject, eventdata, handles) 
+function varargout = ChooseLevelMenu_OutputFcn(~, ~, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -51,29 +51,29 @@ varargout{1} = handles.output;
 
 
 % --- Executes on button press in tag_level1.
-function tag_level1_Callback(hObject, eventdata, handles)
+function tag_level1_Callback(~, ~, ~)
 game(1);
 closereq();
 
 
 % --- Executes on button press in tag_level2.
-function tag_level2_Callback(hObject, eventdata, handles)
+function tag_level2_Callback(~, ~, ~)
 game(2);
 closereq();
 
 
 % --- Executes on button press in tag_level3.
-function tag_level3_Callback(~, eventdata, handles)
+function tag_level3_Callback(~, ~, ~)
 game(3);
 closereq();
 
 
 % --- Executes on button press in tag_close.
-function tag_close_Callback(hObject, eventdata, handles)
+function tag_close_Callback(~, ~, ~)
 closereq();
 
 
 % --- Executes on button press in tag_back.
-function tag_back_Callback(hObject, eventdata, handles)
+function tag_back_Callback(~, ~, ~)
 mainMenu();
 closereq();
