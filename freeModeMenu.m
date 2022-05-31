@@ -23,7 +23,7 @@ end
 
 
 % --- Executes just before freeModeMenu is made visible.
-function freeModeMenu_OpeningFcn(hObject, eventdata, handles, varargin)
+function freeModeMenu_OpeningFcn(hObject, ~, handles, varargin)
     handles.output = hObject; 
     
     handles.density = 95;
@@ -65,8 +65,16 @@ function tag_lightning_Callback(hObject, ~, handles)
     set(handles.tag_cords, "String", "COORDINATES OF THE FIRE: " + handles.x + " " + handles.y);
     guidata(hObject, handles);
 
+ 
 
+function tag_wind_slider_Callback(~, ~, ~)    
+function tag_wind_slider_CreateFcn(~, ~, ~) 
 
+function tag_density_slider_Callback(~, ~, ~)    
+function tag_density_slider_CreateFcn(~, ~, ~) 
+
+function tag_speed_slider_Callback(~, ~, ~)    
+function tag_speed_slider_CreateFcn(~, ~, ~) 
 
 function tag_update_Callback(hObject, ~, handles)
     handles.density = get(handles.tag_density_slider, 'Value') * 100;

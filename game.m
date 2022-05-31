@@ -29,25 +29,22 @@ function game_OpeningFcn(hObject, ~, handles, varargin)
     handles.output = hObject;
     
     axes(handles.tag_simulation);
-    
+    handles.speed = 0.05;
     handles.choice = varargin{1};
     switch handles.choice
         case 1
             handles.density = 75;
             handles.wind = 38;
-            handles.speed = 0.1;
             handles.x = 50;
             handles.y = 50;
         case 2
             handles.density = 80;
-            handles.wind = 40;
-            handles.speed = 0.1;
+            handles.wind = 40;        
             handles.x = [25 70];
             handles.y = [25 70];
         case 3
             handles.density = 90;
             handles.wind = 45;
-            handles.speed = 0.1;
             handles.x = [15 70 45];
             handles.y = [15 70 64];
         otherwise
@@ -91,12 +88,13 @@ function tag_start_Callback(~, ~, handles)
         forest = fireSpread(handles, simulation(handles.density), handles.wind, handles.speed, handles.x, handles.y);
     else
         forest = fireSpread(handles, simulation(handles.density), handles.wind, handles.speed, handles.x, handles.y, handles.fighterX, handles.fighterY);
+        if winningCheck(forest)
+            message = msgbox("Congratulations! You have won!");     %#ok<NASGU> 
+        else
+            message = msgbox("You've lost. Try again");             %#ok<NASGU> 
+        end
     end
-    if winningCheck(forest)
-        message = msgbox("Congratulations! You have won!");     %#ok<NASGU> 
-    else
-        message = msgbox("You've lost. Try again");             %#ok<NASGU> 
-    end
+    
 
 function tag_refresh_Callback(~, ~, handles)
     game(handles.choice)
