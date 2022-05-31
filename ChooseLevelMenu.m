@@ -63,7 +63,7 @@ closereq();
 
 
 % --- Executes on button press in tag_level3.
-function tag_level3_Callback(hObject, eventdata, handles)
+function tag_level3_Callback(~, eventdata, handles)
 game(3);
 closereq();
 

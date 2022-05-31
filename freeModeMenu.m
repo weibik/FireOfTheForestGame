@@ -1,6 +1,6 @@
     function varargout = freeModeMenu(varargin)
 
-% Last Modified by GUIDE v2.5 30-May-2022 15:12:12
+% Last Modified by GUIDE v2.5 31-May-2022 12:43:24
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -34,9 +34,12 @@ function freeModeMenu_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject; 
 
 % Update handles structure
-handles.density = 90;
-handles.wind = 35;
-handles.speed = 0.1;
+handles.density = 95;
+handles.wind = 70;
+handles.speed = 0.01;
+handles.fighterX = [];
+handles.fighterY = [];
+
 set(handles.tag_wind, "String", "WIND " + handles.wind);
 set(handles.tag_speed, "String","SPEED " + handles.speed);
 set(handles.tag_density, "String", newline + "DENSITY " + handles.density);
@@ -49,7 +52,7 @@ guidata(hObject, handles);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = freeModeMenu_OutputFcn(hObject, eventdata, handles) 
+function varargout = freeModeMenu_OutputFcn(~, ~, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -60,14 +63,14 @@ varargout{1} = handles.output;
 
 
 % --- Executes on button press in tag_close.
-function tag_close_Callback(hObject, eventdata, handles)
+function tag_close_Callback(hObject, ~, handles)
 setappdata(handles.tag_simulation, 'stopPlot', 1);
 guidata(hObject, handles);
 closereq();
 
 
 % --- Executes on button press in tag_back.
-function tag_back_Callback(hObject, eventdata, handles)
+function tag_back_Callback(hObject, ~, handles)
 setappdata(handles.tag_simulation, 'stopPlot', 1);
 guidata(hObject, handles);
 mainMenu();
@@ -75,20 +78,20 @@ closereq();
 
 
 % --- Executes on button press in tag_lightning.
-function tag_lightning_Callback(hObject, eventdata, handles)
+function tag_lightning_Callback(hObject, ~, handles)
 [x, y] = ginput(1);
-x = round(x, 0);
-y = round(y, 0);
-set(handles.tag_cords, "String", "COORDINATES OF THE FIRE: " + x + " " + y)
-fireSpread(handles, handles.sim, handles.wind, handles.speed, x, y);
+handles.x = round(x, 0);
+handles.y = round(y, 0);
+set(handles.tag_cords, "String", "COORDINATES OF THE FIRE: " + handles.x + " " + handles.y);
+guidata(hObject, handles);
+
 
 % --- Executes on slider movement.
-function tag_wind_slider_Callback(hObject, eventdata, handles)
-
+function tag_wind_slider_Callback(~, ~, ~)
 
 % --- Executes during object creation, after setting all properties.
-function tag_wind_slider_CreateFcn(hObject, eventdata, handles)
-
+function tag_wind_slider_CreateFcn(hObject, ~, ~)
+    
 
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
@@ -97,13 +100,11 @@ end
 
 
 % --- Executes on slider movement.
-function tag_speed_slider_Callback(hObject, eventdata, handles)
-
+function tag_speed_slider_Callback(~, ~, ~)
 
 
 % --- Executes during object creation, after setting all properties.
-function tag_speed_slider_CreateFcn(hObject, eventdata, handles)
-
+function tag_speed_slider_CreateFcn(hObject, ~, ~)
 
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
@@ -120,19 +121,21 @@ handles.speed = round(handles.speed, 2);
 handles.wind = get(handles.tag_wind_slider, 'Value') * 100;
 handles.wind = round(handles.wind, 0);
 set(handles.tag_wind, "String", "WIND " + handles.wind);
-set(handles.tag_speed, "String","SPEED " + handles.speed);
+set(handles.tag_speed, "String","SPEED " + ( 1 - handles.speed));
 set(handles.tag_density, "String", newline + "DENSITY " + handles.density);
+handles.fighterX = [];
+handles.fighterY = [];
 cla(handles.tag_simulation);
 guidata(hObject, handles);
 handles.sim = simulation(handles.density);
 guidata(hObject, handles);
 
 % --- Executes on slider movement.
-function tag_density_slider_Callback(hObject, eventdata, handles)
+function tag_density_slider_Callback(~, ~, ~)
 
 
 % --- Executes during object creation, after setting all properties.
-function tag_density_slider_CreateFcn(hObject, eventdata, handles)
+function tag_density_slider_CreateFcn(hObject, ~, ~)
 
 % Hint: slider controls usually have a light gray background.
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
@@ -141,4 +144,19 @@ end
 
 
 % --- Executes on button press in tag_firefigther.
-function tag_firefigther_Callback(hObject, eventdata, handles)
+function tag_firefigther_Callback(hObject, ~, handles)
+[x, y] = ginput(1);
+handles.fighterX = round(x, 0);
+handles.fighterY = round(y, 0);
+guidata(hObject, handles);
+
+
+% --- Executes on button press in tag_start.
+function tag_start_Callback(hObject, ~, handles)
+if isempty(handles.fighterX)
+    fireSpread(handles, simulation(handles.density), handles.wind, handles.speed, handles.x, handles.y);
+else
+    fireSpread(handles, simulation(handles.density), handles.wind, handles.speed, handles.x, handles.y, handles.fighterX, handles.fighterY);
+end
+
+

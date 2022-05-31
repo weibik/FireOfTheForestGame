@@ -1,3 +1,10 @@
+F = [0 0 1 0; 
+    1 0 0 1];
+[i, j] = find(F == 1);
+i
+j
+
+%{
 function [] = GUI_17()
 % Demonstrate how to have a running clock in a GUI, and timer use.
 % Creates a small little GUI which displays the correct time and is updated
@@ -65,3 +72,4 @@ switch selection
         return 
 end
 end
+%}
