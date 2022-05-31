@@ -23,47 +23,23 @@ end
 
 
 % --- Executes just before mainMenu is made visible.
-function mainMenu_OpeningFcn(hObject, eventdata, handles, varargin)
-% This function has no output args, see OutputFcn.
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to mainMenu (see VARARGIN)
+function mainMenu_OpeningFcn(hObject, ~, handles, varargin)
+    imshow("menu_picture.jpg");
+    handles.output = hObject;
+    guidata(hObject, handles);   
+    % UIWAIT makes mainMenu wait for user response (see UIRESUME)
+    % uiwait(handles.figure1);
 
-% Choose default command line output for mainMenu
-handles.output = hObject;
+function varargout = mainMenu_OutputFcn(~, ~, handles) 
+    varargout{1} = handles.output;
 
-% Update handles structure
-guidata(hObject, handles);
-imshow("menu_picture.jpg");
+function tag_start_Callback(~, ~, ~)
+    ChooseLevelMenu();
+    closereq();
 
-% UIWAIT makes mainMenu wait for user response (see UIRESUME)
-% uiwait(handles.figure1);
+function tag_free_Callback(~, ~, ~)
+    freeModeMenu();
+    closereq();
 
-
-% --- Outputs from this function are returned to the command line.
-function varargout = mainMenu_OutputFcn(hObject, eventdata, handles) 
-% varargout  cell array for returning output args (see VARARGOUT);
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Get default command line output from handles structure
-varargout{1} = handles.output;
-
-
-% --- Executes on button press in tag_start.
-function tag_start_Callback(hObject, eventdata, handles)
-ChooseLevelMenu();
-closereq();
-
-
-% --- Executes on button press in tag_free.
-function tag_free_Callback(hObject, eventdata, handles)
-freeModeMenu();
-closereq();
-
-
-% --- Executes on button press in tag_close.
-function tag_close_Callback(hObject, eventdata, handles)
-closereq();
+function tag_close_Callback(~, ~, ~)
+    closereq();

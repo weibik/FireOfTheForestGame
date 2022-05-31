@@ -1,6 +1,6 @@
 function varargout = instruction(varargin)
 
-% Last Modified by GUIDE v2.5 15-May-2022 10:49:44
+% Last Modified by GUIDE v2.5 31-May-2022 15:45:39
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -24,34 +24,18 @@ end
 
 % --- Executes just before instruction is made visible.
 function instruction_OpeningFcn(hObject, eventdata, handles, varargin)
-% This function has no output args, see OutputFcn.
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to instruction (see VARARGIN)
-
-% Choose default command line output for instruction
-handles.output = hObject;
-
-% Update handles structure
-guidata(hObject, handles);
-
-% UIWAIT makes instruction wait for user response (see UIRESUME)
-% uiwait(handles.figure1);
+    handles.output = hObject;
+    guidata(hObject, handles);
+    % UIWAIT makes instruction wait for user response (see UIRESUME)
+    % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
 function varargout = instruction_OutputFcn(hObject, eventdata, handles) 
-% varargout  cell array for returning output args (see VARARGOUT);
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Get default command line output from handles structure
-varargout{1} = handles.output;
-axis off;
+    varargout{1} = handles.output;
+    axis off;
 
 
 % --- Executes on button press in tag_close.
 function tag_close_Callback(hObject, eventdata, handles)
-closereq();
+    closereq();

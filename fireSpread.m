@@ -2,7 +2,7 @@ function [forest] = fireSpread(handles, sim, wind, timeOfPause, varargin)
     clc;
     cla;
 
-    F = sim;
+    forest = sim;
    
     nVarargs = length(varargin);
     if nVarargs == 0
@@ -23,7 +23,7 @@ function [forest] = fireSpread(handles, sim, wind, timeOfPause, varargin)
         for ii = 1:length(firefigthersX)
             for i = firefigthersX(ii) - 5 : firefigthersX(ii) + 5
                 for j = firefigthersY(ii) - 5 : firefigthersY(ii) + 5
-                    F(i, j) = 3;
+                    forest(i, j) = 3;
                 end
             end
         end       
@@ -33,36 +33,34 @@ function [forest] = fireSpread(handles, sim, wind, timeOfPause, varargin)
     
 
     for ii =  1:length(x)
-        F(x(ii), y(ii)) = 1;
+        forest(x(ii), y(ii)) = 1;
     end
     
    
 
     %% LOOPS
-    while ~isempty(find(F == 1, 1))                                        
-        [i, j] = find(F == 1);                                              
+    while ~isempty(find(forest == 1, 1))                                        
+        [i, j] = find(forest == 1);                                              
         for x = 1:length(i)                                                 
             for M = 1:8                                                     
                 try                                                         %#ok<TRYNC> 
-                    if F(i(x) + spread(M), j(x) + spread(M + 8)) == 0       
+                    if forest(i(x) + spread(M), j(x) + spread(M + 8)) == 0       
                         if randi([1, 100]) <= wind                          
-                            F(i(x) + spread(M), j(x) + spread(M + 8)) = 1;        
+                            forest(i(x) + spread(M), j(x) + spread(M + 8)) = 1;        
                         end
                     end                    
                 end
-                F(i(x),j(x)) = 2;                                        
+                forest(i(x),j(x)) = 2;                                        
             end
         
         end
 
         pause(timeOfPause);
-        imagesc(F); 
+        imagesc(forest); 
         drawnow; 
 
         if isappdata(handles.tag_simulation,'stopPlot')
             break;
         end
     end
-
-    forest = F;
 

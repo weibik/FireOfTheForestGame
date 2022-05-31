@@ -1,8 +1,8 @@
 function [result] = winningCheck(forest)
 
-    alive = 0;  % 0
-    burned = 0;   % 2
-    empty = 0;  % 3
+    alive = 0;      %   - 0
+    burned = 0;     %   - 2
+    empty = 0;      %   - 3
 
     F = forest;
 
